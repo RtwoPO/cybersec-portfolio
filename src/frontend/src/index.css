@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: near-black #0B0F12 */
+    --background: 0.1 0.015 200;
+    /* Foreground: off-white #E6ECEA */
+    --foreground: 0.92 0.01 175;
+    /* Card: #111A1C */
+    --card: 0.12 0.02 200;
+    --card-foreground: 0.92 0.01 175;
+    /* Popover */
+    --popover: 0.12 0.02 200;
+    --popover-foreground: 0.92 0.01 175;
+    /* Primary: neon green #39D36E */
+    --primary: 0.75 0.18 145;
+    --primary-foreground: 0.08 0.01 200;
+    /* Secondary: muted green-gray #2A4A3A */
+    --secondary: 0.28 0.05 165;
+    --secondary-foreground: 0.92 0.01 175;
+    /* Muted */
+    --muted: 0.18 0.02 190;
+    --muted-foreground: 0.71 0.02 180;
+    /* Accent: cyan #2FD7D7 */
+    --accent: 0.78 0.11 192;
+    --accent-foreground: 0.08 0.01 200;
+    /* Destructive */
+    --destructive: 0.5 0.2 25;
+    --destructive-foreground: 0.95 0.01 0;
+    /* Border */
+    --border: 0.28 0.05 165;
+    --input: 0.2 0.03 185;
+    --ring: 0.75 0.18 145;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: oklch(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: "JetBrains Mono", monospace;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    background-image: radial-gradient(
+        ellipse at 20% 50%,
+        oklch(0.13 0.02 165 / 0.4) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 20%,
+        oklch(0.12 0.015 200 / 0.3) 0%,
+        transparent 50%
+      );
+    min-height: 100vh;
+  }
+
+  /* Circuit trace pattern overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(
+        oklch(0.75 0.18 145 / 0.03) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, oklch(0.75 0.18 145 / 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.1 0.015 200);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.28 0.05 165);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.75 0.18 145 / 0.7);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
